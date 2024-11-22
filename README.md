@@ -9,6 +9,7 @@
 ## 実行方法
 
 DevContainerに入り、以下のコマンドを実行します。  
+※ `~/.aws/credentials`にAWSの認証情報があることを前提とします。  
 
 ```bash
 # テンプレートを生成
@@ -35,6 +36,27 @@ aws sqs list-queues --queue-name-prefix LearningCdkQueue --no-cli-pager
 
 ```bash
 cdk destroy
+```
+
+## 自動デプロイ
+
+GitHub ActionsでCI/CDを行っています。  
+タグをプッシュすると自動的にデプロイされます。  
+
+以下のシークレットを設定してください。  
+
+| シークレット名 | 説明 |
+| --- | --- |
+| AWS_ACCESS_KEY_ID | AWSのアクセスキーID |
+| AWS_SECRET_ACCESS_KEY | AWSのシークレットアクセスキー |
+| AWS_REGION | リージョン |
+
+## テスト
+
+以下のコマンドでテストを実行します。  
+
+```bash
+npm run test
 ```
 
 ## メモ
